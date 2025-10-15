@@ -53,7 +53,6 @@ class AnalyzerService {
     Do not output anything other than the single JSON object.
     """;
   }
-  
   bool get isModelReady => _model != null;
 
   Future<void> initializeModel() async {
@@ -121,12 +120,10 @@ class AnalyzerService {
 
   String przetworzWiadomoscBledu(Object e) {
     final errorString = e.toString();
-    
     RegExpMatch? match = RegExp(r'(\d{3})').firstMatch(errorString);
     if (match != null) {
       return "HTTP Error: ${match.group(1)}";
     }
-    
     match = RegExp(r'[A-Z_]{10,}').firstMatch(errorString);
     if (match != null) {
       final formattedError = match.group(0)!
@@ -137,7 +134,6 @@ class AnalyzerService {
           .join(' ');
       return formattedError;
     }
-    
     if (e is FormatException) {
       return "An unexpected error occurred while processing the data.";
     }
@@ -174,8 +170,7 @@ class AnalyzerService {
       if (validModels.isEmpty) {
         throw Exception("No models found that support generateContent.");
       }
-      
-      const preferredModels = ["gemini-pro-vision", "gemini-1.5-flash-latest"];
+      const preferredModels = ["gemini-2.5-flash"];
       for (final preferred in preferredModels) {
         final foundModel = validModels.firstWhere(
           (name) => name.contains(preferred),
@@ -183,7 +178,6 @@ class AnalyzerService {
         );
         if (foundModel.isNotEmpty) return foundModel;
       }
-      
       return validModels.first;
     } on http.ClientException catch (e) {
       debugPrint("Network error while fetching models: $e");
