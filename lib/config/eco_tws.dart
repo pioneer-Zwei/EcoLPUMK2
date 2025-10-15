@@ -247,7 +247,7 @@ class _RadarSweepPainter extends CustomPainter {
       final startupRadius = radius * startupValue;
       final startupPaint = Paint()
         ..color =
-            Colors.green.withOpacity(0.5 * (1 - startupValue) * fadeOutOpacity)
+            Colors.green.withValues(alpha: 0.5 * (1 - startupValue) * fadeOutOpacity)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2.0;
       canvas.drawCircle(center, startupRadius, startupPaint);
@@ -262,8 +262,8 @@ class _RadarSweepPainter extends CustomPainter {
           center,
           radius,
           [
-            Colors.green.withOpacity(0.05 * gridOpacity * fadeOutOpacity),
-            Colors.green.withOpacity(0.25 * gridOpacity * fadeOutOpacity),
+            Colors.green.withValues(alpha: 0.05 * gridOpacity * fadeOutOpacity),
+            Colors.green.withValues(alpha: 0.25 * gridOpacity * fadeOutOpacity),
           ],
           [0.0, 1.0],
         );
@@ -271,7 +271,7 @@ class _RadarSweepPainter extends CustomPainter {
     }
 
     final gridPaint = Paint()
-      ..color = Colors.green.withOpacity(
+      ..color = Colors.green.withValues(alpha: 
           0.5 * (sweepValue > 0 ? 1.0 : gridOpacity) * fadeOutOpacity)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
@@ -287,12 +287,12 @@ class _RadarSweepPainter extends CustomPainter {
         center + Offset(5, -ringRadius - 12),
         fontSize: 10,
         color: Colors.green
-            .withOpacity((sweepValue > 0 ? 1.0 : gridOpacity) * fadeOutOpacity),
+            .withValues(alpha: (sweepValue > 0 ? 1.0 : gridOpacity) * fadeOutOpacity),
       );
     }
 
     final bearingPaint = Paint()
-      ..color = Colors.green.withOpacity(
+      ..color = Colors.green.withValues(alpha: 
           0.3 * (sweepValue > 0 ? 1.0 : gridOpacity) * fadeOutOpacity)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
@@ -316,7 +316,7 @@ class _RadarSweepPainter extends CustomPainter {
         Offset.fromDirection(bearingAngle - math.pi / 2, radius + 15),
         fontSize: 12,
         color: Colors.green
-            .withOpacity((sweepValue > 0 ? 1.0 : gridOpacity) * fadeOutOpacity),
+            .withValues(alpha: (sweepValue > 0 ? 1.0 : gridOpacity) * fadeOutOpacity),
         isCentered: true,
       );
     }
@@ -329,9 +329,9 @@ class _RadarSweepPainter extends CustomPainter {
           center,
           [
             Colors.transparent,
-            Colors.green.withOpacity(0.05 * fadeOutOpacity),
-            Colors.green.withOpacity(0.4 * fadeOutOpacity),
-            Colors.green.withOpacity(0.05 * fadeOutOpacity),
+            Colors.green.withValues(alpha: 0.05 * fadeOutOpacity),
+            Colors.green.withValues(alpha: 0.4 * fadeOutOpacity),
+            Colors.green.withValues(alpha: 0.05 * fadeOutOpacity),
             Colors.transparent,
           ],
           [0.0, 0.4, 0.5, 0.6, 1.0],
@@ -348,7 +348,7 @@ class _RadarSweepPainter extends CustomPainter {
       canvas.restore();
 
       final linePaint = Paint()
-        ..color = Colors.lightGreenAccent.withOpacity(fadeOutOpacity)
+        ..color = Colors.lightGreenAccent.withValues(alpha: fadeOutOpacity)
         ..strokeWidth = 2.0
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4.0);
       final lineEnd = Offset(
@@ -376,7 +376,7 @@ class _RadarSweepPainter extends CustomPainter {
           fontWeight: FontWeight.bold,
           shadows: [
             Shadow(
-                color: Colors.black.withOpacity(color.opacity),
+                color: Colors.black.withValues(alpha: color.opacity),
                 blurRadius: 2),
           ],
         ),
