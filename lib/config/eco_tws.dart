@@ -376,7 +376,7 @@ class _RadarSweepPainter extends CustomPainter {
           fontWeight: FontWeight.bold,
           shadows: [
             Shadow(
-                color: Colors.black.withValues(alpha: color.opacity),
+                color: Colors.black.withValues(alpha: color.r),
                 blurRadius: 2),
           ],
         ),
